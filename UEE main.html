@@ -1,0 +1,1334 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Practice Only - UEE Mathematics CBT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#f3f4f6;
+    overflow-x:hidden;
+    overflow-y:auto;
+    margin:0;
+}
+/* ================= HOME PAGE ================= */
+
+#menu-page{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+background:#111827;
+}
+
+.hero-card{
+    width:100%;
+    max-width:450px;
+    background:white;
+    border-radius:24px;
+    padding:35px;
+    box-shadow:0 15px 50px rgba(0,0,0,0.4);
+}
+
+.hero-top{
+text-align:center;
+margin-bottom:20px;
+}
+
+.hero-top img{
+width:90px;
+}
+
+.hero-title{
+font-size:42px;
+font-weight:800;
+text-align:center;
+margin-bottom:18px;
+color:#111827;
+}
+
+.hero-sub{
+text-align:center;
+line-height:1.8;
+color:#6b7280;
+margin-bottom:25px;
+}
+
+.exam-box{
+background:#f9fafb;
+padding:22px;
+border-radius:18px;
+border:1px solid #e5e7eb;
+}
+
+.exam-badge{
+display:inline-block;
+background:#dbeafe;
+color:#2563eb;
+padding:10px 16px;
+border-radius:999px;
+font-weight:700;
+font-size:13px;
+margin-bottom:15px;
+}
+
+.exam-name{
+font-size:28px;
+font-weight:800;
+margin-bottom:12px;
+}
+
+.exam-desc{
+color:#6b7280;
+line-height:1.7;
+margin-bottom:25px;
+}
+
+.exam-stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+}
+
+.stat{
+background:white;
+padding:18px;
+border-radius:14px;
+text-align:center;
+border:1px solid #e5e7eb;
+}
+
+.stat h3{
+font-size:28px;
+color:#2563eb;
+margin-bottom:5px;
+}
+
+.stat p{
+font-size:14px;
+font-weight:700;
+}
+
+.start-btn{
+margin-top:25px;
+width:100%;
+padding:18px;
+border:none;
+border-radius:14px;
+background:#2563eb;
+color:white;
+font-size:18px;
+font-weight:800;
+cursor:pointer;
+transition:0.3s;
+}
+
+.start-btn:hover{
+background:#1d4ed8;
+}
+
+/* ================= EXAM PAGE ================= */
+
+#exam-page{
+    display:none;
+    min-height:100vh;
+    background:#f5f7fb;
+    overflow-y:auto;
+}
+
+.topbar{
+height:70px;
+background:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 25px;
+border-bottom:1px solid #e5e7eb;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-size:22px;
+font-weight:800;
+color:#2563eb;
+}
+
+.timer{
+background:#fee2e2;
+color:#dc2626;
+padding:10px 18px;
+border-radius:12px;
+font-weight:800;
+}
+
+.exam-layout{
+display:grid;
+grid-template-columns:1fr 260px;
+gap:15px;
+padding:15px;
+min-height:calc(100vh - 70px);
+height:auto;
+box-sizing:border-box;
+}
+
+@media(max-width:900px){
+
+.exam-layout{
+grid-template-columns:1fr;
+}
+
+.side-panel{
+order:-1;
+display:flex;
+flex-direction:column;
+}
+
+.grid{
+grid-template-columns:repeat(5,1fr);
+}
+}
+
+.question-card{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    border:1px solid #e5e7eb;
+    min-height:500px;
+}
+
+.q-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+.q-number{
+background:#eff6ff;
+color:#2563eb;
+padding:10px 18px;
+border-radius:999px;
+font-weight:700;
+}
+
+.flag-btn{
+color:#dc2626;
+font-weight:700;
+cursor:pointer;
+}
+
+.question{
+font-size:18px;
+line-height:1.4;
+margin-bottom:15px;
+}
+
+.options{
+display:flex;
+flex-direction:column;
+gap:16px;
+}
+
+.option{
+display:flex;
+align-items:center;
+gap:15px;
+padding:10px;
+border:2px solid #e5e7eb;
+border-radius:16px;
+cursor:pointer;
+transition:0.25s;
+}
+
+.option:hover{
+border-color:#2563eb;
+background:#eff6ff;
+}
+
+.option input{
+transform:scale(1.3);
+}
+
+.side-panel{
+background:white;
+padding:12px;
+border-radius:14px;
+border:1px solid #e5e7eb;
+}
+
+.summary{
+padding:8px;
+border-radius:8px;
+font-weight:600;
+font-size:13px;
+margin-bottom:6px;
+text-align:center;
+}
+
+.answered{
+background:#dcfce7;
+color:#15803d;
+}
+
+.remaining{
+background:#fef3c7;
+color:#b45309;
+}
+
+.flagged{
+background:#fee2e2;
+color:#dc2626;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(38px, 1fr));
+gap:6px;
+margin-top:15px;
+}
+
+.question-card{
+height:100%;
+}
+
+body{
+font-size:16px;
+}
+
+.hero-title{
+font-size:clamp(28px, 5vw, 42px);
+}
+
+.question{
+font-size:clamp(16px, 2.5vw, 20px);
+}
+
+.grid button{
+height:36px;
+border:none;
+border-radius:6px;
+font-weight:700;
+font-size:12px;
+cursor:pointer;
+}
+
+.nav-buttons{
+display:flex;
+gap:15px;
+margin-top:35px;
+}
+
+.nav-btn{
+flex:1;
+padding:16px;
+border:none;
+border-radius:14px;
+font-weight:800;
+cursor:pointer;
+font-size:16px;
+}
+
+.prev{
+background:#d1d5db;
+}
+
+.next{
+background:#2563eb;
+color:white;
+}
+
+/* ================= RESULT PAGE ================= */
+
+#result-page{
+display:none;
+padding:50px 20px;
+background:#f5f7fb;
+min-height:100vh;
+}
+
+.result-card{
+max-width:1000px;
+margin:auto;
+background:white;
+padding:40px;
+border-radius:25px;
+}
+
+.result-title{
+font-size:50px;
+font-weight:800;
+margin-bottom:15px;
+text-align:center;
+}
+
+.score{
+font-size:70px;
+font-weight:800;
+color:#2563eb;
+text-align:center;
+margin-bottom:35px;
+}
+
+.review-item{
+background:#f9fafb;
+padding:22px;
+border-radius:18px;
+margin-bottom:18px;
+border-left:6px solid #2563eb;
+line-height:1.8;
+}
+
+.correct{
+color:#16a34a;
+font-weight:800;
+}
+
+.wrong{
+color:#dc2626;
+font-weight:800;
+}
+
+.back-btn{
+width:100%;
+padding:18px;
+border:none;
+border-radius:14px;
+background:#2563eb;
+color:white;
+font-size:18px;
+font-weight:800;
+cursor:pointer;
+margin-top:25px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+.hero-title{
+font-size:34px;
+}
+
+.exam-layout{
+grid-template-columns:1fr;
+}
+
+.side-panel{
+position:relative;
+top:0;
+}
+
+.question-card{
+padding:22px;
+}
+
+.question{
+font-size:20px;
+}
+
+.nav-buttons{
+flex-direction:column;
+}
+
+.grid{
+grid-template-columns:repeat(5,1fr);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HOME PAGE -->
+
+<div id="menu-page">
+
+<div class="hero-card">
+
+<div class="hero-top">
+
+<img src="logo.jpg" alt="Practice Only Logo">
+
+</div>
+
+
+<h1 class="hero-title">
+UEE Mathematics CBT
+</h1>
+
+<p class="hero-sub">
+Modern Ethiopian University Entrance Examination System
+</p>
+
+<div class="exam-box">
+
+<div class="exam-badge">
+2025 CBT Examination
+</div>
+
+<h2 class="exam-name">
+Grade 12 Mathematics
+</h2>
+
+<p class="exam-desc">
+Practice Ethiopian university entrance examination questions with timer, navigation system and instant scoring.
+</p>
+
+<div class="exam-stats">
+
+<div class="stat">
+<h3>60</h3>
+<p>Questions</p>
+</div>
+
+<div class="stat">
+<h3>3h</h3>
+<p>Duration</p>
+</div>
+
+<div class="stat">
+<h3>MCQ</h3>
+<p>Exam Type</p>
+</div>
+
+</div>
+
+<button class="start-btn" onclick="startExam()">
+Start Exam
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- EXAM PAGE -->
+
+<div id="exam-page">
+
+<div class="topbar">
+
+<div class="logo">
+UEE CBT System
+</div>
+
+<div class="timer" id="timer">
+03:00:00
+</div>
+
+</div>
+
+<div class="exam-layout">
+
+<div class="question-card">
+
+<div class="q-head">
+
+<div class="q-number" id="question-number">
+Question 1
+</div>
+
+<div class="flag-btn" onclick="toggleFlag()">
+🚩 Flag
+</div>
+
+</div>
+
+<div class="question" id="question-text"></div>
+
+<div class="options" id="options-container"></div>
+
+<div class="nav-buttons">
+
+<button class="nav-btn prev" onclick="prevQuestion()">
+Previous
+</button>
+
+<button class="nav-btn next" onclick="nextQuestion()">
+Next
+</button>
+
+</div>
+
+</div>
+
+<div class="side-panel">
+
+<div class="summary answered">
+Answered:
+<span id="answered-count">0</span>
+</div>
+
+<div class="summary remaining">
+Remaining:
+<span id="remaining-count">60</span>
+</div>
+
+<div class="summary flagged">
+Flagged:
+<span id="flagged-count">0</span>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<button class="start-btn" onclick="submitExam()">
+Submit Exam
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RESULT PAGE -->
+
+<div id="result-page">
+
+<div class="result-card">
+
+<h1 class="result-title">
+Exam Completed
+</h1>
+
+<div class="score" id="score"></div>
+
+<div id="review"></div>
+
+<button class="back-btn" onclick="location.reload()">
+Return Home
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* PASTE YOUR 60 QUESTIONS HERE */
+
+
+const questions=[
+
+{
+question:"What is the value of 2³?",
+options:["6","8","9","12"],
+ans:1
+},
+
+{
+question:"Simplify: 3x + 2x",
+options:["5x","6x","9x","x"],
+ans:0
+},
+
+{
+question:"What is the square root of 81?",
+options:["7","8","9","10"],
+ans:2
+},
+
+{
+question:"Solve: x² - 25 = 0",
+options:["5","-5","±5","0"],
+ans:2
+},
+
+{
+question:"What is the slope of y = 3x + 5?",
+options:["3","5","8","0"],
+ans:0
+},
+
+{
+question:"Find the value of sin 30°.",
+options:["1","1/2","√3","0"],
+ans:1
+},
+
+{
+question:"What is the derivative of x²?",
+options:["x","2x","x²","2"],
+ans:1
+},
+
+{
+question:"Find the area of a circle with radius 7.",
+options:["49π","14π","21π","28π"],
+ans:0
+},
+
+{
+question:"What is the probability of getting head when tossing a fair coin?",
+options:["0","1","1/2","2"],
+ans:2
+},
+
+{
+question:"Solve: 5x = 20",
+options:["2","3","4","5"],
+ans:2
+},
+
+{
+question:"What is log₁₀(100)?",
+options:["1","2","10","100"],
+ans:1
+},
+
+{
+question:"Find the next term: 2,4,8,16,...",
+options:["18","24","32","64"],
+ans:2
+},
+
+{
+question:"What is the perimeter of a square with side 5?",
+options:["10","15","20","25"],
+ans:2
+},
+
+{
+question:"What is cos 0°?",
+options:["0","1","-1","1/2"],
+ans:1
+},
+
+{
+question:"What is the midpoint of (2,4) and (6,8)?",
+options:["(4,6)","(8,12)","(3,4)","(5,6)"],
+ans:0
+},
+
+{
+question:"Simplify: (a²)(a³)",
+options:["a⁵","a⁶","a⁹","a²"],
+ans:0
+},
+
+{
+question:"Find the value of π approximately.",
+options:["2.14","3.14","4.13","3.41"],
+ans:1
+},
+
+{
+question:"What is 25% of 200?",
+options:["25","50","75","100"],
+ans:1
+},
+
+{
+question:"Solve: 9x - 3 = 24",
+options:["2","3","4","5"],
+ans:1
+},
+
+{
+question:"What is the sum of interior angles of a triangle?",
+options:["90°","180°","270°","360°"],
+ans:1
+},
+
+{
+question:"What is √144?",
+options:["10","11","12","13"],
+ans:2
+},
+
+{
+question:"Find the value of tan 45°.",
+options:["0","1","√2","2"],
+ans:1
+},
+
+{
+question:"What is the formula of area of rectangle?",
+options:["l+b","2(l+b)","l×w","πr²"],
+ans:2
+},
+
+{
+question:"What is 7²?",
+options:["14","21","49","77"],
+ans:2
+},
+
+{
+question:"Find the solution of 2x+5=15.",
+options:["2","5","10","15"],
+ans:1
+},
+
+{
+question:"What is the cube root of 27?",
+options:["2","3","4","9"],
+ans:1
+},
+
+{
+question:"Find the LCM of 4 and 6.",
+options:["12","18","24","6"],
+ans:0
+},
+
+{
+question:"What is the value of 5! ?",
+options:["25","60","120","240"],
+ans:2
+},
+
+{
+question:"What is the probability of rolling a 6 on a die?",
+options:["1/2","1/3","1/6","1/12"],
+ans:2
+},
+
+{
+question:"What is the equation of a straight line?",
+options:["y=mx+b","a²+b²=c²","πr²","V=lwh"],
+ans:0
+},
+
+{
+question:"Find the area of triangle with base 10 and height 8.",
+options:["20","30","40","50"],
+ans:2
+},
+
+{
+question:"What is 15% of 300?",
+options:["30","45","60","75"],
+ans:1
+},
+
+{
+question:"Simplify: x⁰",
+options:["0","1","x","undefined"],
+ans:1
+},
+
+{
+question:"What is the value of sec 60°?",
+options:["1","2","√2","1/2"],
+ans:1
+},
+
+{
+question:"What is the sum of first five natural numbers?",
+options:["10","15","20","25"],
+ans:1
+},
+
+{
+question:"Find the mean of 2,4,6,8.",
+options:["4","5","6","7"],
+ans:1
+},
+
+{
+question:"What is the formula of circumference of a circle?",
+options:["πr²","2πr","πd²","r²"],
+ans:1
+},
+
+{
+question:"What is 0.5 as a fraction?",
+options:["1/2","1/3","1/4","2/5"],
+ans:0
+},
+
+{
+question:"Find the value of 3²+4².",
+options:["12","25","49","81"],
+ans:1
+},
+
+{
+question:"What is the volume of a cube with side 3?",
+options:["9","18","27","36"],
+ans:2
+},
+
+{
+question:"What is the opposite of positive number?",
+options:["Natural","Whole","Negative","Prime"],
+ans:2
+},
+
+{
+question:"What is the smallest prime number?",
+options:["0","1","2","3"],
+ans:2
+},
+
+{
+question:"Find the mode: 2,2,3,4,4,4,5",
+options:["2","3","4","5"],
+ans:2
+},
+
+{
+question:"What is 1000 ÷ 10?",
+options:["10","50","100","1000"],
+ans:2
+},
+
+{
+question:"Find the area of square with side 9.",
+options:["18","27","81","72"],
+ans:2
+},
+
+{
+question:"What is the value of 4³?",
+options:["12","16","64","81"],
+ans:2
+},
+
+{
+question:"Find the solution of x/5=4.",
+options:["5","10","15","20"],
+ans:3
+},
+
+{
+question:"What is the decimal of 1/4?",
+options:["0.5","0.25","0.75","0.4"],
+ans:1
+},
+
+{
+question:"Find the median of 2,4,6,8,10.",
+options:["4","5","6","8"],
+ans:2
+},
+
+{
+question:"What is 9×8?",
+options:["72","81","63","54"],
+ans:0
+},
+
+{
+question:"Find the value of 6².",
+options:["12","18","24","36"],
+ans:3
+},
+
+{
+question:"What is the sum of angles in quadrilateral?",
+options:["180°","270°","360°","540°"],
+ans:2
+},
+
+{
+question:"Find the perimeter of rectangle with l=10,w=5.",
+options:["15","20","30","40"],
+ans:2
+},
+
+{
+question:"What is the reciprocal of 2?",
+options:["1/2","2","1","0"],
+ans:0
+},
+
+{
+question:"What is the value of 10²?",
+options:["10","20","100","1000"],
+ans:2
+},
+
+{
+question:"Find the HCF of 8 and 12.",
+options:["2","4","6","8"],
+ans:1
+},
+
+{
+question:"What is the formula of simple interest?",
+options:["P×R×T","PRT/100","P+R+T","P-R-T"],
+ans:1
+},
+
+{
+question:"Find the value of 7+8×2.",
+options:["30","23","22","18"],
+ans:1
+},
+
+{
+question:"What is the probability of impossible event?",
+options:["0","1","1/2","2"],
+ans:0
+},
+
+{
+question:"Find the area of circle radius 14.",
+options:["196π","28π","154π","98π"],
+ans:0
+},
+
+{
+question:"What is the value of 12×12?",
+options:["124","132","144","156"],
+ans:2
+}
+
+];
+
+
+
+let current=0;
+
+let answers=Array(questions.length).fill(null);
+
+let flags=Array(questions.length).fill(false);
+
+let time=10800;
+
+function startExam(){
+
+document.getElementById("menu-page").style.display="none";
+document.getElementById("exam-page").style.display="block";
+
+renderQuestion();
+startTimer();
+
+}
+
+function renderQuestion(){
+
+const q=questions[current];
+
+document.getElementById("question-number").innerText=
+`Question ${current+1} of ${questions.length}`;
+
+document.getElementById("question-text").innerText=q.question;
+
+const container=document.getElementById("options-container");
+
+container.innerHTML='';
+
+q.options.forEach((opt,index)=>{
+
+container.innerHTML += `
+
+<label class="option">
+
+<input
+type="radio"
+name="option"
+${answers[current]===index?'checked':''}
+onclick="selectAnswer(${index})"
+>
+
+<div>
+<b>${String.fromCharCode(65+index)}.</b>
+${opt}
+</div>
+
+</label>
+
+`;
+
+});
+
+renderGrid();
+updateSummary();
+
+}
+
+function selectAnswer(index){
+
+answers[current]=index;
+
+renderGrid();
+updateSummary();
+
+}
+
+function nextQuestion(){
+
+if(current<questions.length-1){
+
+current++;
+renderQuestion();
+
+}
+
+}
+
+function prevQuestion(){
+
+if(current>0){
+
+current--;
+renderQuestion();
+
+}
+
+}
+
+function toggleFlag(){
+
+flags[current]=!flags[current];
+
+renderGrid();
+updateSummary();
+
+}
+
+function renderGrid(){
+
+const grid=document.getElementById("grid");
+
+grid.innerHTML='';
+
+questions.forEach((q,i)=>{
+
+const btn=document.createElement("button");
+
+btn.innerText=i+1;
+
+if(i===current){
+
+btn.style.background="#111827";
+btn.style.color="white";
+
+}
+
+else if(flags[i]){
+
+btn.style.background="#dc2626";
+btn.style.color="white";
+
+}
+
+else if(answers[i]!==null){
+
+btn.style.background="#16a34a";
+btn.style.color="white";
+
+}
+
+else{
+
+btn.style.background="#d1d5db";
+btn.style.color="#111827";
+
+}
+
+btn.onclick=()=>{
+
+current=i;
+renderQuestion();
+
+};
+
+grid.appendChild(btn);
+
+});
+
+}
+
+function updateSummary(){
+
+document.getElementById("answered-count").innerText=
+answers.filter(a=>a!==null).length;
+
+document.getElementById("remaining-count").innerText=
+answers.filter(a=>a===null).length;
+
+document.getElementById("flagged-count").innerText=
+flags.filter(f=>f).length;
+
+}
+
+function startTimer(){
+
+const interval=setInterval(()=>{
+
+time--;
+
+let hrs=Math.floor(time/3600);
+let mins=Math.floor((time%3600)/60);
+let secs=time%60;
+
+document.getElementById("timer").innerText=
+`${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+
+if(time<=0){
+
+clearInterval(interval);
+submitExam();
+
+}
+
+},1000);
+
+}
+
+
+function submitExam(){
+
+document.getElementById("exam-page").style.display="none";
+
+document.getElementById("result-page").style.display="block";
+
+let score=0;
+
+let review='';
+
+answers.forEach((a,i)=>{
+
+if(a===questions[i].ans){
+
+score++;
+
+}
+
+/* EXPLANATIONS */
+
+let explanation="";
+
+if(a!==questions[i].ans){
+
+switch(i){
+
+case 0:
+explanation="2³ means 2 × 2 × 2 = 8.";
+break;
+
+case 1:
+explanation="Like terms are added together. 3x + 2x = 5x.";
+break;
+
+case 2:
+explanation="9 × 9 = 81, therefore √81 = 9.";
+break;
+
+case 3:
+explanation="x² - 25 = 0 becomes x² = 25, so x = ±5.";
+break;
+
+case 4:
+explanation="In y = mx + b, the slope is m. Therefore slope = 3.";
+break;
+
+default:
+explanation="Review this question carefully and practice similar examples.";
+}
+
+}
+
+/* REVIEW CARD */
+
+review += `
+
+<div class="review-item">
+
+<b>Question ${i+1}</b>
+
+<br><br>
+
+Your Answer:
+
+<span class="${a===questions[i].ans?'correct':'wrong'}">
+
+${a!==null ? questions[i].options[a] : 'Not Answered'}
+
+</span>
+
+${
+a!==questions[i].ans
+?
+
+`<div style="
+margin-top:18px;
+padding:15px;
+background:#fef2f2;
+border-left:5px solid #dc2626;
+border-radius:10px;
+line-height:1.7;
+">
+
+<b style="color:#dc2626;">
+Explanation:
+</b>
+
+<br>
+
+${explanation}
+
+</div>`
+
+:
+
+`<div style="
+margin-top:18px;
+padding:15px;
+background:#dcfce7;
+border-left:5px solid #16a34a;
+border-radius:10px;
+line-height:1.7;
+color:#166534;
+font-weight:700;
+">
+
+Correct ✅
+
+</div>`
+
+}
+
+</div>
+
+`;
+
+});
+
+let percent=Math.round((score/questions.length)*100);
+
+document.getElementById("score").innerHTML=
+
+`${score}/${questions.length}
+
+<br>
+
+<span style="font-size:28px;">
+${percent}%
+</span>`;
+
+document.getElementById("review").innerHTML=review;
+
+}
+
+
+</script>
+
+</body>
+</html>
