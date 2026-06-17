@@ -42,13 +42,13 @@ body{
 }
 
 .hero-card{
-    width:100%;
-    max-width:420px;
+    width:min(92vw, 450px);
+    margin:auto;
     background:white;
-    border-radius:28px;
-    padding:40px 30px;
+    border-radius:24px;
+    padding:clamp(20px,5vw,40px);
     text-align:center;
-    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+    box-shadow:0 15px 50px rgba(0,0,0,.15);
 }
 
 .hero-top{
@@ -57,7 +57,8 @@ margin-bottom:20px;
 }
 
 .hero-top img{
-width:90px;
+    width:clamp(80px,20vw,120px);
+    height:auto;
 }
 
 .hero-title{
@@ -65,6 +66,7 @@ width:90px;
     font-weight:800;
     color:#111827;
     margin-bottom:10px;
+    font-size:clamp(30px,8vw,52px);
 }
 
 .hero-sub{
@@ -199,19 +201,20 @@ box-sizing:border-box;
 
 @media(max-width:900px){
 
-.exam-layout{
-grid-template-columns:1fr;
-}
+    .exam-layout{
+        display:flex;
+        flex-direction:column;
+    }
 
-.side-panel{
-order:-1;
-display:flex;
-flex-direction:column;
-}
+    .question-card{
+        order:1;
+    }
 
-.grid{
-grid-template-columns:repeat(5,1fr);
-}
+    .side-panel{
+        order:2;
+        margin-top:15px;
+    }
+
 }
 
 .question-card{
@@ -307,10 +310,10 @@ color:#dc2626;
 }
 
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit, minmax(38px, 1fr));
-gap:6px;
-margin-top:15px;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:6px;
+    margin-top:15px;
 }
 
 .question-card{
@@ -330,12 +333,12 @@ font-size:clamp(16px, 2.5vw, 20px);
 }
 
 .grid button{
-height:36px;
-border:none;
-border-radius:6px;
-font-weight:700;
-font-size:12px;
-cursor:pointer;
+    width:40px;
+    height:40px;
+    font-size:12px;
+    border:none;
+    border-radius:8px;
+    font-weight:700;
 }
 
 .nav-buttons{
@@ -677,11 +680,6 @@ options:["0","1","1/2","2"],
 ans:2
 },
 
-{
-question:"Solve: 5x = 20",
-options:["2","3","4","5"],
-ans:2
-},
 
 {
 question:"What is log₁₀(100)?",
