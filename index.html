@@ -109,15 +109,39 @@ margin-bottom:25px;
 }
 
 .exam-stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
+display:grid;
+grid-template-columns:repeat(3,minmax(0,1fr));
+gap:8px;
+width:100%;
+}
+@media(max-width:600px){
+
+.hero-card{
+    width:92%;
+    padding:20px;
+}
+
 }
 
 .stat{
     min-width:0;
     padding:15px 10px;
     text-align:center;
+}
+@media(max-width:600px){
+
+.stat{
+    padding:10px 5px;
+}
+
+.stat h3{
+    font-size:28px;
+}
+
+.stat p{
+    font-size:12px;
+}
+
 }
 
 .stat h3{
@@ -216,7 +240,7 @@ box-sizing:border-box;
     .question-card{
         order:1;
     }
-    
+
     .exam-stats{
     grid-template-columns:1fr;
 }
