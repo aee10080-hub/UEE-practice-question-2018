@@ -201,7 +201,7 @@ z-index:1000;
 }
 
 .logo{
-font-size:50px;
+font-size:clamp(20px,4vw,36px);
 font-weight:800;
 color:#2563eb;
 }
@@ -271,9 +271,10 @@ margin-bottom:30px;
 .q-number{
 background:#eff6ff;
 color:#2563eb;
-padding:10px 18px;
+padding:8px 14px;
 border-radius:999px;
 font-weight:700;
+font-size: 14px;
 }
 
 .flag-btn{
@@ -283,8 +284,8 @@ cursor:pointer;
 }
 
 .question{
-font-size:18px;
-line-height:1.4;
+font-size:15px;
+line-height:1.5;
 margin-bottom:15px;
 }
 
@@ -298,7 +299,7 @@ gap:16px;
 display:flex;
 align-items:center;
 gap:15px;
-padding:10px;
+padding:8px;
 border:2px solid #e5e7eb;
 border-radius:16px;
 cursor:pointer;
@@ -555,7 +556,14 @@ grid-template-columns:repeat(5,1fr);
         font-size:15px;
         border-radius:12px;
     }
+
+    .question-image{
+width:350px;
+max-width:100%;
+display:block;
+margin:15px auto;
 }
+
 
 </style>
 
@@ -681,6 +689,9 @@ Submit Exam
 
 </div>
 
+
+
+
 <!-- RESULT PAGE -->
 
 <div id="result-page">
@@ -737,6 +748,25 @@ document.querySelector(".logo").innerText="History";
     startExam();
 }
 
+function showQuestion(index){
+
+const q = mathQuestions[index];
+
+questionContainer.innerHTML = `
+<h2>Question ${index+1}</h2>
+
+<p>${q.question}</p>
+
+${q.image ? `<img src="${q.image}" class="question-image">` : ""}
+
+<div class="options">
+${q.options.map(opt =>
+`<button>${opt}</button>`
+).join("")}
+</div>
+`;
+
+}
 
 
 let current=0;
@@ -764,11 +794,16 @@ const q=questions[current];
 document.getElementById("question-number").innerText=
 `Question ${current+1} of ${questions.length}`;
 
-document.getElementById("question-text").innerText=q.question;
+const questionText = document.getElementById("question-text");
 
-const container=document.getElementById("options-container");
+questionText.innerHTML = `
+<p>${q.question}</p>
+${q.image ? `<img src="${q.image}" class="question-image">` : ""}
+`;
 
-container.innerHTML='';
+const container = document.getElementById("options-container");
+
+container.innerHTML = '';
 
 q.options.forEach((opt,index)=>{
 
