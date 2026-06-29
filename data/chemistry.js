@@ -12,23 +12,33 @@ ans:3
 },
 
 {
-question:"Which of the following rate equations represents a second order reaction?",
-options:[
-"Rate = K[A]²",
-"Rate = K[2A]",
-"Rate = K[A][B]",
-"A & C"
-],
-ans:3
+    question: "which of the following is the correct structure of benzene?",
+    options: [ 
+        {
+            image: "images/b1.png",
+        },
+        {
+            image: "images/b2.png",
+        },
+        {
+            image: "images/b3.png",
+        },
+{
+    image: "images/b4.png",
+},
+
+    ],
+        ans:0
 },
 
 {
-question:"Based on the reaction data, what is the proper rate expression?",
+question:"Given the following structure; What is the IUPAC name for the above structure?",
+image: "images/iupac.png",
 options:[
-"R = K[X]",
-"R = K[X]²",
-"R = K[Y]²",
-"R = K[X]²[Y]"
+"Methyl ethanoate",
+"Ethyl ethanoate",
+"propyl formate",
+"Ethyl acetate"
 ],
 ans:2
 },
@@ -67,12 +77,13 @@ ans:1
 },
 
 {
-question:"Which change increases SO₃ at equilibrium?",
+question:"which of the following molecules has a shape that can be represented with the following models?",
+image: "images/molecule.png",
 options:[
-"I only",
-"II only",
-"I and II only",
-"II and III only"
+"CH<sub>4</sub>",
+"NH<sub>3</sub>",
+"H<sub>2</sub>O",
+"SF<sub>4</sub>",
 ],
 ans:1
 },
@@ -111,20 +122,25 @@ ans:3
 },
 
 {
-question:"What is the bond order?",
-options:["1","1.5","2","2.5"],
-ans:1
+question:"What is the bond order of the O₂ molecule according to molecular orbital theory?",
+options:[
+"1",
+"1.5",
+"2",
+"2.5"
+],
+ans:2
 },
 
 {
-question:"What is the hybridization?",
+question:"What is the hybridization of the carbon atom in ethene (C₂H₄)?",
 options:[
 "sp³d²",
 "sp³d",
 "sp³",
 "sp²"
 ],
-ans:3
+ans:2
 },
 
 {
@@ -172,14 +188,12 @@ ans:3
 },
 
 {
-question:"Production of NO is favored by",
-options:[
-"High pressure",
-"Low pressure",
-"Catalyst",
-"High concentration of N₂"
-],
-ans:3
+    question: "The rate of the reaction NO<sub>2(g)</sub>+CO<sub>(g)→NO<sub>(g)+CO<sub>2(g)</sub> Was determined in three experiments at agiven temperature. The results are given in the following table.  what is the value of the rate constant at the given temperature?",
+    image: "images/table2.png",
+  options: [ "1.25 × 10^-5 s^-1",
+  "2.50 × 10^-5 s^-1",
+  "5.00 × 10^-5 s^-1",
+  "7.50 × 10^-5 s^-1", ], 
 },
 
 {
@@ -874,6 +888,4 @@ options:[
 ],
 ans:3
 }
-
-
 ];

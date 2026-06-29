@@ -10,7 +10,7 @@ ans:1
 },
 
 {
-question:"Which one of the following is the equation of the tangent line to the graph of f(x)= 2x^3-4x^2+5x+3 at the point (0,3)?",
+question:"Which one of the following is the equation of the tangent line to the graph of f(x)= 2x<sup>3</sup>-4x<sup>2</sup>+5x+3 at the point (0,3)?",
 options:["3x+5y-3=0",
     "3x-5y−3=0",
     "C.5x−y+3=0",

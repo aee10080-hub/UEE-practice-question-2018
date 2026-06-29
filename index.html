@@ -283,10 +283,13 @@ font-weight:700;
 cursor:pointer;
 }
 
-.question{
-font-size:15px;
-line-height:1.5;
-margin-bottom:15px;
+.question {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.8;
+  max-width: 650px;
+  margin-bottom: 20px;
+  color: #111827;
 }
 
 .options{
@@ -563,6 +566,48 @@ max-width:100%;
 display:block;
 margin:15px auto;
 }
+@media (max-width: 600px) {
+    body {
+        font-size: 18px;
+    }
+
+    .question {
+        font-size: 22px;
+    }
+
+    .option {
+        font-size: 18px;
+    }
+
+    .q-number {
+        font-size: 16px;
+    }
+
+    .timer {
+        font-size: 18px;
+    }
+}
+.question {
+    font-size: clamp(18px, 5vw, 24px);
+}
+
+.option {
+    font-size: clamp(16px, 4vw, 20px);
+}
+.option-image{
+    width:150px;
+    max-width:100%;
+    display:block;
+    margin-top:10px;
+    border-radius:8px;
+}
+
+.question-image{
+    width:350px;
+    max-width:100%;
+    display:block;
+    margin:15px auto;
+}
 
 
 </style>
@@ -580,13 +625,6 @@ margin:15px auto;
 <div class="hero-top">
     <img src="logo.jpg" alt="Practice Only Logo">
 </div>
-
-
-<p class="hero-sub"><b>
-Mathematics UEE CBT Platform
-</b>
-</p>
-
 
 <button class="start-btn" onclick="selectSubject('math')">
 📘 Mathematics
@@ -636,7 +674,7 @@ Mathematics
 Question 1
 </div>
 
-<div class="flag-btn" onclick="toggleFlag()">
+<div class="flag-btn" id="flag-btn" onclick="toggleFlag()">
 🚩 Flag
 </div>
 
@@ -789,49 +827,67 @@ startTimer();
 
 function renderQuestion(){
 
-const q=questions[current];
+    const q = questions[current];
 
-document.getElementById("question-number").innerText=
-`Question ${current+1} of ${questions.length}`;
+    document.getElementById("question-number").innerText =
+    `Question ${current+1} of ${questions.length}`;
 
-const questionText = document.getElementById("question-text");
+    const questionText =
+    document.getElementById("question-text");
 
-questionText.innerHTML = `
-<p>${q.question}</p>
-${q.image ? `<img src="${q.image}" class="question-image">` : ""}
-`;
+    questionText.innerHTML = `
+        <p>${q.question}</p>
+        ${q.image ?
+        `<img src="${q.image}" class="question-image">`
+        : ""}
+    `;
 
-const container = document.getElementById("options-container");
+    const container =
+    document.getElementById("options-container");
 
-container.innerHTML = '';
+    container.innerHTML = "";
 
-q.options.forEach((opt,index)=>{
+    q.options.forEach((opt,index)=>{
 
-container.innerHTML += `
+        const optionText =
+        typeof opt === "string"
+        ? opt
+        : (opt.text || "");
 
-<label class="option">
+        const optionImage =
+        typeof opt === "object" && opt.image
+        ? `<img src="${opt.image}" class="option-image">`
+        : "";
 
-<input
-type="radio"
-name="option"
-${answers[current]===index?'checked':''}
-onclick="selectAnswer(${index})"
->
+        container.innerHTML += `
 
-<div>
-<b>${String.fromCharCode(65+index)}.</b>
-${opt}
-</div>
+        <label class="option">
 
-</label>
+            <input
+                type="radio"
+                name="option"
+                ${answers[current]===index ? "checked" : ""}
+                onclick="selectAnswer(${index})"
+            >
 
-`;
+            <div>
 
-});
+                <b>${String.fromCharCode(65+index)}.</b>
 
-renderGrid();
-updateSummary();
+                ${optionText}
 
+                ${optionImage}
+
+            </div>
+
+        </label>
+
+        `;
+    });
+
+    renderGrid();
+    updateSummary();
+    renderFlagButton();
 }
 
 function selectAnswer(index){
@@ -865,12 +921,21 @@ renderQuestion();
 
 }
 
-function toggleFlag(){
+function toggleFlag() {
+    flags[current] = !flags[current];
 
-flags[current]=!flags[current];
+    renderFlagButton();
+    renderGrid();
+    updateSummary();
+}
+function renderFlagButton() {
+    const btn = document.getElementById("flag-btn");
 
-renderGrid();
-updateSummary();
+    if (flags[current]) {
+        btn.textContent = "🚩 Unflag";
+    } else {
+        btn.textContent = "🚩 Flag";
+    }
 
 }
 
