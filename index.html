@@ -870,31 +870,40 @@ Return Home
 let questions=[];
 
 function selectSubject(subject){
+if(subject==="math"){
+    questions = mathQuestions;
+    time = 10800; // 3:00:00
+    document.querySelector(".logo").innerText = "Mathematics";
+}
 
-    if(subject==="math"){
-questions = mathQuestions;
-time = 10800; // 3h
-document.querySelector(".logo").innerText="Mathematics";
-}
-    if(subject==="chemistry"){
-questions = chemistryQuestions;
-time = 9000; // 2h 30m
-document.querySelector(".logo").innerText="Chemistry";
-}
-    if(subject==="history"){
-questions = historyQuestions;
-time = 7200; // 2h
-document.querySelector(".logo").innerText="History";
-}
-  if(subject==="geography"){
-questions = geographyQuestions;
-time = 7200; // 2h
-document.querySelector(".logo").innerText="geography";
-}
 if(subject==="Physics"){
-questions = physicsQuestions;
-time = 7200;
-document.querySelector(".logo").innerText="Physics";
+    questions = physicsQuestions;
+    time = 9000; // 2:30:00
+    document.querySelector(".logo").innerText = "Physics";
+}
+
+if(subject==="chemistry"){
+    questions = chemistryQuestions;
+    time = 7200; // 2:00:00
+    document.querySelector(".logo").innerText = "Chemistry";
+}
+
+if(subject==="history"){
+    questions = historyQuestions;
+    time = 7200; // 2:00:00
+    document.querySelector(".logo").innerText = "History";
+}
+
+if(subject==="geography"){
+    questions = geographyQuestions;
+    time = 7200; // 2:00:00
+    document.querySelector(".logo").innerText = "Geography";
+}
+
+if(subject==="English"){
+    questions = englishQuestions;
+    time = 7200; // 2:00:00
+    document.querySelector(".logo").innerText = "English";
 }
     answers = Array(questions.length).fill(null);
     flags = Array(questions.length).fill(false);
@@ -1237,6 +1246,39 @@ review=`
 
 document.getElementById("review").innerHTML=review;
 
+}
+let timerInterval;
+
+function startTimer() {
+
+    clearInterval(timerInterval);
+
+    updateTimer();
+
+    timerInterval = setInterval(() => {
+
+        if (time <= 0) {
+            clearInterval(timerInterval);
+            submitExam();
+            return;
+        }
+
+        time--;
+        updateTimer();
+
+    }, 1000);
+}
+
+function updateTimer() {
+
+    const hours = Math.floor(time / 3600);
+    const minutes = Math.floor((time % 3600) / 60);
+    const seconds = time % 60;
+
+    document.getElementById("timer").textContent =
+        String(hours).padStart(2, "0") + ":" +
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
 }
 
 </script>
