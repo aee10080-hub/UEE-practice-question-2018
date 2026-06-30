@@ -284,11 +284,14 @@ cursor:pointer;
 }
 
 .question{
-    font-size:16px;
+ font-size: clamp(14px, 4vw, 15px);
     line-height:1.6;
     font-weight:500;
     color:#111827;
     margin-bottom:18px;
+}
+.instruction{
+    font-weight: 400;
 }
 
 .options{
@@ -365,8 +368,11 @@ font-size:16px;
 font-size:clamp(28px, 5vw, 42px);
 }
 
-.question{
-font-size:clamp(16px, 2.5vw, 20px);
+.instruction,
+.question,
+.option{
+    font-size: clamp(14px, 4vw, 15px);
+    line-height: 1.6;
 }
 
 .grid button{
@@ -413,22 +419,24 @@ min-height:100vh;
 }
 
 .result-card{
-max-width:1000px;
-margin:auto;
-background:white;
-padding:40px;
-border-radius:25px;
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:10px;
+    border-radius:14px;
 }
 
 .result-title{
-font-size:50px;
+font-size:32px;
 font-weight:800;
+line-height: 1.2;
 margin-bottom:15px;
 text-align:center;
 }
 
 .score{
-font-size:70px;
+font-size:48px;
+line-height: 1.1;
 font-weight:800;
 color:#2563eb;
 text-align:center;
@@ -436,12 +444,13 @@ margin-bottom:35px;
 }
 
 .review-item{
-background:#f9fafb;
-padding:22px;
-border-radius:18px;
-margin-bottom:18px;
-border-left:6px solid #2563eb;
-line-height:1.8;
+    background:#f9fafb;
+    padding:12px;
+    border-radius:12px;
+    margin-bottom:10px;
+    border-left:4px solid #2563eb;
+    line-height:1.2;
+    font-size:12px;
 }
 
 .correct{
@@ -456,12 +465,12 @@ font-weight:800;
 
 .back-btn{
 width:100%;
-padding:18px;
+padding:14px;
 border:none;
 border-radius:14px;
 background:#2563eb;
 color:white;
-font-size:18px;
+font-size:15px;
 font-weight:800;
 cursor:pointer;
 margin-top:25px;
@@ -623,6 +632,56 @@ margin:15px auto;
     }
 
 }
+/* ================= RESULT PAGE MOBILE ================= */
+
+@media (max-width:600px){
+
+#result-page{
+    padding:20px 12px;
+}
+
+.result-card{
+    padding:18px;
+    border-radius:18px;
+}
+
+.result-title{
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.score{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.score span{
+    font-size:20px !important;
+}
+
+.review-item{
+    padding:12px;
+    border-radius:14px;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.review-item h3{
+    font-size:16px;
+    margin-bottom:10px;
+}
+
+.correct,
+.wrong{
+    font-size:15px;
+}
+
+.back-btn{
+    padding:12px;
+    font-size:15px;
+}
+
+}
 
 
 </style>
@@ -655,6 +714,15 @@ margin:15px auto;
 
 <button class="start-btn" onclick="selectSubject('history')">
 📜 History
+</button>
+
+<br><br>
+
+<button class="start-btn" onclick="selectSubject('geography')">
+🌍 Geography
+</button>
+<button class="start-btn" onclick="selectSubject('Physics')">
+,🚀 Physics
 </button>
 
 </div>
@@ -694,6 +762,8 @@ Question 1
 </div>
 
 </div>
+
+<div id="instruction" class="instruction"></div>
 
 <div class="question" id="question-text"></div>
 
@@ -769,6 +839,7 @@ Return Home
 <script src="data/maths.js"></script>
 <script src="data/chemistry.js"></script>
 <script src="data/history.js"></script>
+<script src="data/geography.js"></script>
 
 <script src="script.js"></script>
 
@@ -795,6 +866,11 @@ questions = historyQuestions;
 time = 7200; // 2h
 document.querySelector(".logo").innerText="History";
 }
+  if(subject==="geography"){
+questions = geographyQuestions;
+time = 7200; // 2h
+document.querySelector(".logo").innerText="geography";
+}
     answers = Array(questions.length).fill(null);
     flags = Array(questions.length).fill(false);
 
@@ -803,7 +879,7 @@ document.querySelector(".logo").innerText="History";
 
 function showQuestion(index){
 
-const q = mathQuestions[index];
+const q = questions[index];
 
 questionContainer.innerHTML = `
 <h2>Question ${index+1}</h2>
@@ -903,6 +979,20 @@ function renderQuestion(){
     renderGrid();
     updateSummary();
     renderFlagButton();
+  const instructionDiv = document.getElementById("instruction");
+
+let instruction = "";
+
+for (let i = current; i >= 0; i--) {
+    if (questions[i].instruction) {
+        instruction = questions[i].instruction;
+        break;
+    }
+}
+
+instructionDiv.innerHTML = instruction
+    ? `<strong>${instruction}</strong>`
+    : "";
 }
 
 function selectAnswer(index){
@@ -1065,9 +1155,14 @@ score++;
 
 if(a!==correct){
 
-review+=`
-
+review += `
 <div class="review-item">
+
+<h3 style="margin-bottom:10px;font-size:18px;">
+❌ Question ${i+1}
+</h3>
+
+<div style="font-size:15px;line-height:1.6;">
 
 <h3>
 ❌ Question ${i+1}
@@ -1101,6 +1196,7 @@ Correct Answer:
 ${questions[i].options[correct]}
 
 </span>
+</div>
 
 </div>
 
