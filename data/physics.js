@@ -239,7 +239,7 @@ ans:0
 {
 question: "Two cylinders A and B fitted with pistons contain equal amounts of an ideal diatomic gas at 300 K. The piston of A is free to move, while that of B is fixed. If the same amount of heat is given to each cylinder and the rise in temperature of gas in A is 30 K, then the rise in temperature of gas in B is:",
 options: ["30 K", "18 K", "50 K", "42 K"],
-answer: "42 K"
+ans:3
 },
 
 {
@@ -250,19 +250,19 @@ options: [
 "3mA = 2mB",
 "9mA = 4mB"
 ],
-answer: "3mA = 2mB"
+ans:2
 },
 
 {
 question: "The work function of a substance is 4.0 eV. The longest wavelength of light that causes photoelectron emission from this substance is approximately:",
 options: ["540 nm", "400 nm", "310 nm", "220 nm"],
-answer: "310 nm"
+ans:2
 },
 
 {
 question: "When heating one mole of a certain gas at constant volume an energy transfer of 400 J produce an increase in temperature of 20 K, what temperature would be if the same amount of gas heated in the same way at constant pressure?",
 options: ["12 K", "10 K", "33.3 K", "20 K"],
-answer: "12 K"
+ans:0
 },
 
 {
@@ -273,7 +273,7 @@ options: [
 "The molecules interact by forces during inelastic collisions",
 "Collisions lose no kinetic energy"
 ],
-answer: "The molecules interact by forces during inelastic collisions"
+ans:2
 },
 
 {
@@ -283,13 +283,13 @@ options: [
 "In compression of gas",
 "In combustion"
 ],
-answer: "In compression of gas"
+ans:1
 },
 
 {
 question: "The heat engine operating between 127°C and 527°C has efficiency equal to 40% of the maximum theoretical efficiency. How much energy is extracted from hot reservoir in order to do 4 kJ work?",
 options: ["4 kJ", "20 kJ", "0.8 kJ", "5 kJ"],
-answer: "20 kJ"
+ans:1
 },
 
 {
@@ -300,13 +300,13 @@ options: [
 "Critical point",
 "Melting point"
 ],
-answer: "Triple point"
+ans:1
 },
 
 {
 question: "A heat engine operating at maximum efficiency has efficiency of 25%. Temperature of cold reservoir is 300 K. Temperature of hot reservoir is:",
 options: ["500 K", "450 K", "350 K", "400 K"],
-answer: "400 K"
+ans:3
 },
 {
 question:"In Rutherford experiment, a beam of positively charged alpha particles was projected into a thin piece of gold foil. The observation shows that some charged particles deflected through a large angle (10° to 90°). The conclusion drawn is:",
@@ -316,7 +316,7 @@ options:[
 "All the atom is negative charge",
 "Most mass and positive charge are in tiny central nucleus"
 ],
-answer:"Most mass and positive charge are in tiny central nucleus"
+ans:3
 },
 
 {
@@ -327,7 +327,7 @@ options:[
 "2×10⁻⁶ decays/s",
 "5×10⁻⁷ decays/s"
 ],
-answer:"6.93×10⁻⁶ decays/s"
+ans:0
 },
 
 {
@@ -338,13 +338,13 @@ options:[
 "Diffraction of light by double slit",
 "Dispersion of white light"
 ],
-answer:"Photoelectric effect"
+ans:1
 },
 
 {
 question:"The half-life of radium-224 is 3.5 days. What fraction remains undecayed after fourteen days?",
 options:["1/2","1/4","1/8","1/16"],
-answer:"1/16"
+ans:3
 },
 
 {
@@ -355,7 +355,7 @@ options:[
 "Proton",
 "Alpha particle"
 ],
-answer:"Neutron"
+ans:1
 },
 
 {
@@ -366,7 +366,7 @@ options:[
 "Wavelength greater than ultraviolet",
 "Frequency of light must exceed threshold"
 ],
-answer:"Frequency of light must exceed threshold"
+ans:1
 },
 
 {
@@ -377,7 +377,7 @@ options:[
 "Speed of light",
 "Absorbance of metal"
 ],
-answer:"Frequency of light"
+ans:0
 },
 
 {
@@ -388,7 +388,7 @@ options:[
 "8 min",
 "16 min"
 ],
-answer:"8 min"
+ans:2
 },
 
 {
@@ -399,7 +399,7 @@ options:[
 "Alpha emissions are least influenced by magnetic field",
 "Most penetrating emissions are gamma particles"
 ],
-answer:"Alpha emissions are least influenced by magnetic field"
+ans:2
 },
 
 {
@@ -410,19 +410,19 @@ options:[
 "De Broglie wavelength",
 "Uncertainty principle"
 ],
-answer:"Electron volt"
+ans:1
 },
 
 {
 question:"The maximum kinetic energy of photoelectrons emitted from a surface when photons of energy 6 eV fall on it and work function is 4 eV. Stopping potential is:",
 options:["2 V","4 V","6 V","10 V"],
-answer:"2 V"
+ans:0
 },
 
 {
 question:"A capacitor C = 2 μF and inductance L = 10 H with resistance 5 Ω are in series circuit. At resonance current is 0.2 A. Power of the circuit is:",
 options:["100 W","50 W","20 W","10 W"],
-answer:"20 W"
+ans:2
 },
 
 {
@@ -433,7 +433,7 @@ options:[
 "16 mH",
 "20 mH"
 ],
-answer:"16 mH"
+ans:2
 },
 
 {
@@ -444,7 +444,7 @@ options:[
 "Energy",
 "Mass"
 ],
-answer:"Energy"
+ans:2
 },
 
 {
@@ -455,7 +455,7 @@ options:[
 "100 W, 0.707",
 "70.7 W, 0.707"
 ],
-answer:"70.7 W, 0.707"
+ans:3
 },
 
 {
@@ -466,7 +466,7 @@ options:[
 "Capacitor",
 "Diode"
 ],
-answer:"Capacitor"
+ans:2
 },
 
 {
@@ -477,7 +477,7 @@ options:[
 "Energy",
 "Mass"
 ],
-answer:"Energy"
+ans:2
 },
 
 {
@@ -488,7 +488,7 @@ options:[
 "Induction by magnetic field",
 "Steady state current"
 ],
-answer:"Induction by magnetic field"
+ans:1
 },
 
 {
@@ -499,7 +499,7 @@ options:[
 "Mechanical energy to electrical",
 "Low voltage to high voltage"
 ],
-answer:"Mechanical energy to electrical"
+ans:2
 },
 {
     question: "Three charges and are aligned on a straight line at and respectively as shown in figure below. Which statement is correct about the net force on ?",
