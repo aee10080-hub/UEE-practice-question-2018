@@ -47,6 +47,9 @@ body{
     border-radius:24px;
     padding:clamp(16px, 4vw, 25px);
     box-sizing:border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 html, body{
@@ -704,25 +707,41 @@ margin:15px auto;
 📘 Mathematics
 </button>
 
-<br><br>
+
 
 <button class="start-btn" onclick="selectSubject('chemistry')">
 🧪 Chemistry
 </button>
 
-<br><br>
+
 
 <button class="start-btn" onclick="selectSubject('history')">
 📜 History
 </button>
 
-<br><br>
 
 <button class="start-btn" onclick="selectSubject('geography')">
 🌍 Geography
 </button>
+
+<button class="start-btn" onclick="selectSubject('economics')">
+📊 Economics
+</button>
+
+<button class="start-btn" onclick="selectSubject('English')">
+📖 English
+</button>
+
+<button class="start-btn" onclick="selectSubject('SAT')">
+💡 SAT
+</button>
+
 <button class="start-btn" onclick="selectSubject('Physics')">
 ,🚀 Physics
+</button>
+
+<button class="start-btn" onclick="selectSubject('Biology')">
+🧬 Biology
 </button>
 
 </div>
@@ -1110,31 +1129,6 @@ flags.filter(f=>f).length;
 
 }
 
-function startTimer(){
-
-const interval=setInterval(()=>{
-
-time--;
-
-let hrs=Math.floor(time/3600);
-let mins=Math.floor((time%3600)/60);
-let secs=time%60;
-
-document.getElementById("timer").innerText=
-`${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
-
-if(time<=0){
-
-clearInterval(interval);
-submitExam();
-
-}
-
-},1000);
-
-}
-
-
 function submitExam(){
 
 document.getElementById("exam-page").style.display="none";
@@ -1164,27 +1158,14 @@ review += `
 
 <div style="font-size:15px;line-height:1.6;">
 
-<h3>
-❌ Question ${i+1}
-</h3>
-
-<br>
-
 Your Answer:
 
 <span class="wrong">
-
 ${
 a!==null
-?
-
-questions[i].options[a]
-
-:
-
-"Not Answered"
+? questions[i].options[a]
+: "Not Answered"
 }
-
 </span>
 
 <br><br>
@@ -1192,14 +1173,12 @@ questions[i].options[a]
 Correct Answer:
 
 <span class="correct">
-
 ${questions[i].options[correct]}
-
 </span>
-</div>
 
 </div>
 
+</div>
 `;
 
 }
@@ -1210,11 +1189,7 @@ let percent=Math.round(
 (score/questions.length)*100
 );
 
-document.getElementById(
-"score"
-).innerHTML=
-
-`
+document.getElementById("score").innerHTML=`
 ${score}/${questions.length}
 
 <br>
@@ -1247,25 +1222,17 @@ ${questions.length-score}
 `;
 
 if(review===""){
-
 review=`
-
 <div class="review-item">
-
 🎉 Perfect score
-
 </div>
-
 `;
+}
+
+document.getElementById("review").innerHTML=review;
 
 }
 
-document.getElementById(
-"review"
-).innerHTML=
-review;
-
-}
 </script>
 
 </body>
