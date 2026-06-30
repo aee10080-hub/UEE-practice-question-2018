@@ -859,6 +859,7 @@ Return Home
 <script src="data/chemistry.js"></script>
 <script src="data/history.js"></script>
 <script src="data/geography.js"></script>
+<script src="data/physics.js"></script>
 
 <script src="script.js"></script>
 
@@ -889,6 +890,11 @@ document.querySelector(".logo").innerText="History";
 questions = geographyQuestions;
 time = 7200; // 2h
 document.querySelector(".logo").innerText="geography";
+}
+if(subject==="Physics"){
+questions = physicsQuestions;
+time = 7200;
+document.querySelector(".logo").innerText="Physics";
 }
     answers = Array(questions.length).fill(null);
     flags = Array(questions.length).fill(false);
